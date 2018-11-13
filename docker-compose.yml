@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    container_name: "db"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: calendar
+      MYSQL_USER: calendar
+      MYSQL_PASSWORD: password
+    ports:
+      - "3306:3306"
+    volumes:
+      - './data/mysql:/var/lib/mysql'
+  sample-app:
+    image: react-sample
+    container_name: sample-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - '.:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    ports:
+      - '3000:3000'
+    links:
+      - db:db 
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - db
+  php:
+    image: php:7-fpm
+    depends_on:
+      - db
+    volumes:
+      - ./code:/code

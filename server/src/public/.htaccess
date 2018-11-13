@@ -1,0 +1,4 @@
+RewriteEngine On
+RewriteCond %{Request_Filename} !-d
+RewriteCond %{Request_Filename} !-f
+RewriteRule . index.php [L]
