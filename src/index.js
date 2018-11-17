@@ -7,14 +7,14 @@ import User from './components/user';
 
 const Calendar = styled.div`
   margin-top: 50px;
-  margin-right: 120px;
+  margin-right: 60px;
 `
 
 const Title = styled.div`
   text-align: center;
   font-weight: ${props => props.theme.type.weights.bold};
   font-size: ${props => props.theme.type.sizes.large};
-  color: ${props => props.theme.colors.grey2};
+  color: ${props => props.theme.colors.primary};
 `
 
 class Table extends PureComponent {
@@ -31,7 +31,7 @@ class Table extends PureComponent {
       <ThemeProvider theme={theme}>
         <Calendar>
           <Title>
-            <h1>This is a Table</h1>
+            <h1>Weekly Work Schedule</h1>
           </Title>
           <HeadingCells />
           {users.map((user, index) => (
