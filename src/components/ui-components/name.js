@@ -5,7 +5,7 @@ import styled from 'styled-components'
 const StyledName = styled.h1`
   text-align: center;
   padding-top: 70px;
-  font-size: 30px;
+  font-size: 20px;
   margin-top: -50px;
 `;
 
